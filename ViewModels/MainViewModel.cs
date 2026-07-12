@@ -612,6 +612,9 @@ public class MainViewModel : INotifyPropertyChanged
                 StatusDetail = "The customized image is ready";
                 AppendLog($"ISO created successfully: {outputPath}");
                 IsBuildCompleted = true;
+                ShowDialog(
+                    "Build completed",
+                    "Thank you for choosing WinISO Builder.\n\nIf you like this project, please consider donating me a cup of coffee.");
             });
         }
         catch (OperationCanceledException)
