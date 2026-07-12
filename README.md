@@ -94,6 +94,28 @@ Compress-Archive `
 6. Tùy chọn bật Lab Mode nếu cần unattended setup cho môi trường lab.
 7. Bấm `RUN AND BUILD`.
 
+## Hình ảnh giao diện
+
+### 1. UI giao diện
+
+![UI giao diện](asset/1.png)
+
+### 2. Thêm file ISO
+
+![Thêm file ISO](asset/2.png)
+
+### 3. Tùy chọn Unattended Setup
+
+![Tùy chọn Unattended Setup](asset/3.png)
+
+### 4. Thêm driver và chọn vị trí lưu trữ
+
+![Thêm driver và chọn vị trí lưu trữ](asset/4.png)
+
+### 5. Xác nhận building
+
+![Xác nhận building](asset/5.png)
+
 ## Luồng xử lý kỹ thuật
 
 1. Nếu input là ISO, app giải nén vào:
