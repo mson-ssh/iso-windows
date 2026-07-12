@@ -1,0 +1,284 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Colors -->
+    <SolidColorBrush x:Key="BgLight" Color="#f8f9fa"/>
+    <SolidColorBrush x:Key="BgCard" Color="#ffffff"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#dee2e6"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#212529"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#6c757d"/>
+    <SolidColorBrush x:Key="Accent" Color="#0d6efd"/>
+    <SolidColorBrush x:Key="AccentHover" Color="#0b5ed7"/>
+    <SolidColorBrush x:Key="Success" Color="#198754"/>
+    <SolidColorBrush x:Key="Danger" Color="#dc3545"/>
+    <SolidColorBrush x:Key="InputBg" Color="#f1f3f5"/>
+    <SolidColorBrush x:Key="TitleBarBg" Color="#e9ecef"/>
+    <SolidColorBrush x:Key="SurfaceAlt" Color="#f8fafc"/>
+    <SolidColorBrush x:Key="BadgeNeutralBg" Color="#eef2f6"/>
+    <SolidColorBrush x:Key="BadgeNeutralText" Color="#52606d"/>
+
+    <SolidColorBrush x:Key="ProgressGreen" Color="#198754"/>
+
+    <!-- SVG-like icon geometries -->
+    <Geometry x:Key="IconShield">F1 M8,1 L14,3.5 L14,8.5 C14,12 11.6,15.1 8,16 C4.4,15.1 2,12 2,8.5 L2,3.5 Z</Geometry>
+    <Geometry x:Key="IconDisc">F1 M8,1 A7,7 0 1 1 7.99,1 Z M8,5.25 A2.75,2.75 0 1 0 8,10.75 A2.75,2.75 0 1 0 8,5.25 Z</Geometry>
+    <Geometry x:Key="IconFolder">F1 M1.5,4.5 L6,4.5 L7.2,6 L14.5,6 C15.3,6 16,6.7 16,7.5 L16,13.5 C16,14.3 15.3,15 14.5,15 L1.5,15 C0.7,15 0,14.3 0,13.5 L0,6 C0,5.2 0.7,4.5 1.5,4.5 Z</Geometry>
+    <Geometry x:Key="IconChip">F1 M5,5 L11,5 L11,11 L5,11 Z M7,7 L9,7 L9,9 L7,9 Z M3,0 L4,0 L4,3 L3,3 Z M7,0 L8,0 L8,3 L7,3 Z M11,0 L12,0 L12,3 L11,3 Z M3,13 L4,13 L4,16 L3,16 Z M7,13 L8,13 L8,16 L7,16 Z M11,13 L12,13 L12,16 L11,16 Z M0,3 L3,3 L3,4 L0,4 Z M0,7 L3,7 L3,8 L0,8 Z M0,11 L3,11 L3,12 L0,12 Z M13,3 L16,3 L16,4 L13,4 Z M13,7 L16,7 L16,8 L13,8 Z M13,11 L16,11 L16,12 L13,12 Z</Geometry>
+    <Geometry x:Key="IconTerminal">F1 M1.5,2 L14.5,2 C15.3,2 16,2.7 16,3.5 L16,12.5 C16,13.3 15.3,14 14.5,14 L1.5,14 C0.7,14 0,13.3 0,12.5 L0,3.5 C0,2.7 0.7,2 1.5,2 Z M3,5 L5.5,7 L3,9 L4.1,10.1 L7.7,6.5 L4.1,2.9 Z M8,10 L13,10 L13,8.5 L8,8.5 Z</Geometry>
+
+    <Style TargetType="Path" x:Key="HeaderIconStyle">
+        <Setter Property="Fill" Value="{StaticResource Accent}"/>
+        <Setter Property="Width" Value="16"/>
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="StatusBadgeStyle">
+        <Setter Property="Background" Value="{StaticResource BadgeNeutralBg}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="Margin" Value="0,0,8,0"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="StepCardStyle" BasedOn="{StaticResource StatusBadgeStyle}">
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12,8"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="StatusBadgeTextStyle">
+        <Setter Property="Foreground" Value="{StaticResource BadgeNeutralText}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="SectionCardStyle">
+        <Setter Property="Background" Value="{StaticResource BgCard}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource BgLight}"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="HeaderStyle">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="SubHeaderStyle">
+        <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="LabelStyle">
+        <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="InfoStyle">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="PathBoxStyle">
+        <Setter Property="Background" Value="{StaticResource InputBg}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BrowseBtnStyle">
+        <Setter Property="Background" Value="{StaticResource BgCard}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="16,8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="0"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e9ecef"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BuildBtnStyle" BasedOn="{StaticResource BrowseBtnStyle}">
+        <Setter Property="Background" Value="{StaticResource Accent}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="18,10"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="0"
+                            CornerRadius="0"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsBuildCompleted}" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Success}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource Success}"/>
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="DialogPrimaryBtnStyle">
+        <Setter Property="Background" Value="{StaticResource Accent}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="MinWidth" Value="136"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="0"
+                            CornerRadius="0"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="False"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ComboBox" x:Key="EditionComboStyle">
+        <Setter Property="Background" Value="{StaticResource InputBg}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="8,6"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="LinkBtnStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource Accent}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Padding" Value="2,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock Text="{TemplateBinding Content}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontFamily="{TemplateBinding FontFamily}"
+                               FontSize="{TemplateBinding FontSize}"
+                               Padding="{TemplateBinding Padding}"
+                               Cursor="Hand"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource AccentHover}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BadgeButtonStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource BadgeNeutralText}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.75"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="RemoveBtnStyle" BasedOn="{StaticResource BrowseBtnStyle}">
+        <Setter Property="Background" Value="#fff5f5"/>
+        <Setter Property="Foreground" Value="{StaticResource Danger}"/>
+        <Setter Property="BorderBrush" Value="#f5c2c7"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="28"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="0,-2,0,0"/>
+    </Style>
+
+</ResourceDictionary>
