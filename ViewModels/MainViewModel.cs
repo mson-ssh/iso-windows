@@ -42,6 +42,7 @@ public class MainViewModel : INotifyPropertyChanged
     private bool _driversReady;
     private bool _isDialogOpen;
     private bool _isConfirmationDialog;
+    private bool _isDonateDialog;
     private bool _isAdvancedMode = true;
     private bool _showOnboarding = true;
     private bool _isAdmin;
@@ -75,6 +76,7 @@ public class MainViewModel : INotifyPropertyChanged
     public bool DriversReady { get => _driversReady; set { _driversReady = value; OnPropertyChanged(); } }
     public bool IsDialogOpen { get => _isDialogOpen; set { _isDialogOpen = value; OnPropertyChanged(); } }
     public bool IsConfirmationDialog { get => _isConfirmationDialog; set { _isConfirmationDialog = value; OnPropertyChanged(); } }
+    public bool IsDonateDialog { get => _isDonateDialog; set { _isDonateDialog = value; OnPropertyChanged(); } }
     public bool IsAdvancedMode { get => _isAdvancedMode; set { _isAdvancedMode = value; OnPropertyChanged(); OnPropertyChanged(nameof(ModeText)); } }
     public bool ShowOnboarding { get => _showOnboarding; set { _showOnboarding = value; OnPropertyChanged(); } }
     public bool IsAdmin { get => _isAdmin; set { _isAdmin = value; OnPropertyChanged(); OnPropertyChanged(nameof(AdminStatusColor)); } }
@@ -198,13 +200,14 @@ public class MainViewModel : INotifyPropertyChanged
         Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
     }
 
-    private void ShowDialog(string title, string message)
+    private void ShowDialog(string title, string message, bool showDonateQr = false)
     {
         DialogTitle = title;
         DialogMessage = message;
         DialogPrimaryText = "OK";
         DialogSecondaryText = "";
         IsConfirmationDialog = false;
+        IsDonateDialog = showDonateQr;
         IsDialogOpen = true;
         AppendLog($"[{title}] {message}");
     }
@@ -218,6 +221,7 @@ public class MainViewModel : INotifyPropertyChanged
         DialogPrimaryText = primaryText;
         DialogSecondaryText = secondaryText;
         IsConfirmationDialog = true;
+        IsDonateDialog = false;
         IsDialogOpen = true;
         _dialogCompletion = new TaskCompletionSource<bool>();
         return _dialogCompletion.Task;
@@ -242,6 +246,7 @@ public class MainViewModel : INotifyPropertyChanged
         _dialogCompletion = null;
         IsDialogOpen = false;
         IsConfirmationDialog = false;
+        IsDonateDialog = false;
     }
 
     private void AppendLog(string message)
@@ -614,7 +619,8 @@ public class MainViewModel : INotifyPropertyChanged
                 IsBuildCompleted = true;
                 ShowDialog(
                     "Build completed",
-                    "Thank you for choosing WinISO Builder.\n\nIf you like this project, please consider donating me a cup of coffee.");
+                    "Thank you for choosing WinISO Builder.\n\nIf you like this project, please consider donating me a cup of coffee.",
+                    showDonateQr: true);
             });
         }
         catch (OperationCanceledException)

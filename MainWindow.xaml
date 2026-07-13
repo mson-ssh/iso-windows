@@ -630,7 +630,7 @@
                             BorderBrush="{StaticResource BorderColor}"
                             BorderThickness="1"
                             CornerRadius="0"
-                            Width="420"
+                            Width="500"
                             Padding="20"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center">
@@ -646,6 +646,19 @@
                                        FontSize="12"
                                        TextWrapping="Wrap"
                                        Margin="0,12,0,18"/>
+                            <Border Background="{StaticResource InputBg}"
+                                    BorderBrush="{StaticResource BorderColor}"
+                                    BorderThickness="1"
+                                    Padding="8"
+                                    Margin="0,0,0,18"
+                                    HorizontalAlignment="Center"
+                                    Visibility="{Binding IsDonateDialog, Converter={StaticResource BoolToVis}}">
+                                <Image Source="asset/donate-qr.png"
+                                       Width="300"
+                                       Height="300"
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button Content="{Binding DialogSecondaryText}"
                                         Style="{StaticResource BrowseBtnStyle}"

@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Resource Include="asset\donate-qr.png" />
     <Resource Include="logo\app.ico" />
   </ItemGroup>
 
