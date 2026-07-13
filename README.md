@@ -116,6 +116,10 @@ Compress-Archive `
 
 ![Xác nhận building](asset/5.png)
 
+### 6. Done
+
+![Done](asset/6.png)
+
 ## Luồng xử lý kỹ thuật
 
 1. Nếu input là ISO, app giải nén vào:
