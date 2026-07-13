@@ -1,40 +1,40 @@
 # WinISO Builder
 
-WinISO Builder is a Windows WPF tool for creating customized Windows installation ISO files. It can read Windows ISO sources, keep selected editions, inject `.inf` drivers offline with DISM, optionally generate Lab Mode unattended setup files, and rebuild a bootable ISO with Windows ADK `oscdimg.exe`.
+WinISO Builder là ứng dụng WPF dùng để tạo ISO cài đặt Windows tùy biến. Ứng dụng hỗ trợ đọc nguồn ISO Windows, giữ lại các edition được chọn, inject driver `.inf` offline bằng DISM, tùy chọn tạo unattended setup cho Lab Mode, và build lại ISO bootable bằng Windows ADK `oscdimg.exe`.
 
-## Features
+## Tính năng
 
-- Select a Windows `.iso` file or an extracted Windows source folder.
-- Read editions from `sources\install.wim` or `sources\install.esd`.
-- Keep only selected editions in the output image.
-- Inject recursive `.inf` drivers into selected editions.
-- Optional Lab Mode unattended setup for internal testing.
-- Visible build log with running commands.
-- Cleanup `%TEMP%\WinISOBuilder` after build, cancel, fail, or app exit.
-- Build completion popup with donation QR.
+- Chọn file Windows `.iso` hoặc thư mục source Windows đã giải nén.
+- Đọc edition từ `sources\install.wim` hoặc `sources\install.esd`.
+- Chỉ giữ lại các edition được chọn trong output image.
+- Inject driver `.inf` đệ quy vào các edition đã chọn.
+- Lab Mode tùy chọn cho môi trường test/internal.
+- Log trực quan trong UI, bao gồm command đang chạy.
+- Tự dọn `%TEMP%\WinISOBuilder` sau khi build, cancel, fail hoặc thoát app.
+- Popup hoàn tất build có QR donate coffee.
 
-## Requirements
+## Yêu cầu
 
 - Windows 10/11 x64.
-- Run as Administrator.
-- Windows ADK Deployment Tools (`oscdimg.exe` required).
-- DISM, included with Windows.
-- .NET SDK 10 only if building from source.
+- Chạy bằng quyền Administrator.
+- Windows ADK Deployment Tools, bắt buộc có `oscdimg.exe`.
+- DISM có sẵn trong Windows.
+- .NET SDK 10 chỉ cần khi build từ source.
 
-Quick setup:
+Cài nhanh môi trường:
 
 ```powershell
 winget install -e --id Microsoft.WindowsADK
 winget install -e --id Microsoft.DotNet.SDK.10
 ```
 
-Common `oscdimg.exe` path:
+Đường dẫn `oscdimg.exe` thường gặp:
 
 ```text
 C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe
 ```
 
-## Build From Source
+## Build từ source
 
 ```powershell
 dotnet restore
@@ -53,66 +53,66 @@ Output:
 bin\Release\net10.0-windows\publish\win-x64\WinISOBuilder.exe
 ```
 
-## Usage
+## Cách sử dụng
 
-1. Run `WinISOBuilder.exe` as Administrator.
-2. Select a Windows ISO or extracted source folder.
-3. Select the editions to keep.
-4. Select a driver folder containing `.inf` files.
-5. Choose the output ISO path.
-6. Enable Lab Mode only for trusted lab/internal environments.
-7. Click `RUN AND BUILD`.
+1. Chạy `WinISOBuilder.exe` bằng quyền Administrator.
+2. Chọn Windows ISO hoặc thư mục source đã giải nén.
+3. Chọn các edition muốn giữ lại.
+4. Chọn thư mục driver có chứa file `.inf`.
+5. Chọn vị trí lưu ISO output.
+6. Chỉ bật Lab Mode cho môi trường lab/internal đáng tin cậy.
+7. Bấm `RUN AND BUILD`.
 
-If the input is an ISO, the app extracts it to:
+Nếu input là ISO, app sẽ giải nén vào:
 
 ```text
 %TEMP%\WinISOBuilder\extract\<random>
 ```
 
-Temporary files are cleaned automatically after the build flow finishes or when the app exits.
+Các file tạm sẽ được dọn tự động sau khi build xong hoặc khi thoát app.
 
-## Screenshots
+## Hình ảnh
 
-### 1. Main UI
+### 1. Giao diện chính
 
-![Main UI](asset/1.png)
+![Giao diện chính](asset/1.png)
 
-### 2. Select ISO
+### 2. Chọn ISO
 
-![Select ISO](asset/2.png)
+![Chọn ISO](asset/2.png)
 
 ### 3. Unattended Setup
 
 ![Unattended Setup](asset/3.png)
 
-### 4. Drivers and Output
+### 4. Driver và vị trí lưu
 
-![Drivers and Output](asset/4.png)
+![Driver và vị trí lưu](asset/4.png)
 
-### 5. Build Confirmation
+### 5. Xác nhận build
 
-![Build Confirmation](asset/5.png)
+![Xác nhận build](asset/5.png)
 
-### 6. Done
+### 6. Hoàn tất
 
-![Done](asset/6.png)
+![Hoàn tất](asset/6.png)
 
-### 7. Donation QR
+### 7. QR donate
 
-<img src="asset/donate-qr.png" alt="Donation QR" width="360">
+<img src="asset/donate-qr.png" alt="QR donate" width="360">
 
-## Lab Mode Notice
+## Lưu ý về Lab Mode
 
-Lab Mode creates a local administrator account, skips selected OOBE screens, disables UAC, prevents automatic device encryption, and writes unattended setup files. Use it only for trusted lab or internal deployment environments.
+Lab Mode tạo local administrator account, bỏ qua một số màn hình OOBE, disable UAC, ngăn automatic device encryption, và ghi unattended setup files. Chỉ nên dùng cho lab, test bench hoặc môi trường internal đáng tin cậy.
 
 ## Troubleshooting
 
-- `oscdimg.exe not found`: install Windows ADK Deployment Tools.
-- `Elevated permissions are required`: restart the app as Administrator.
-- Driver folder has no `.inf`: select a valid recursive driver folder.
-- Output ISO is not bootable: verify the source contains required boot files.
+- `oscdimg.exe not found`: cài Windows ADK Deployment Tools.
+- `Elevated permissions are required`: chạy lại app bằng quyền Administrator.
+- Thư mục driver không có `.inf`: chọn đúng thư mục driver có thể quét đệ quy.
+- Output ISO không boot được: kiểm tra source có đủ boot files.
 
-Technical logs are written to:
+Log kỹ thuật nằm tại:
 
 ```text
 %TEMP%\WinISOBuilder\logs
@@ -120,4 +120,4 @@ Technical logs are written to:
 
 ## Autounattend.xml
 
-`Autounattend.xml` in the repository root is a sample/reference file. The app generates its own `Autounattend.xml` when Lab Mode is enabled.
+File `Autounattend.xml` ở root repo là sample/reference. Khi bật Lab Mode, app sẽ tự generate `Autounattend.xml` riêng trong quá trình build.
